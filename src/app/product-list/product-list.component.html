@@ -1,0 +1,24 @@
+<div class="container">
+<div class="jumbotron">
+<h1>Products List in MyStore App</h1>
+<div class="row">
+  <div class="col-sm-4 p-5" *ngFor="let product of products; index as productId">
+<h3>
+  <a [title]="product.name + 'details'" [routerLink]="['/products', productId]">
+    {{ product.name }}
+  </a>
+</h3>
+<h3 *ngIf="product.image">
+   <img [src]="product.image" height="100px" width="100px">
+ </h3>
+ <h5 *ngIf="product.price">
+   {{ product.price | currency:"₹"}}
+</h5>
+<p *ngIf="product.description">
+ <b> Description</b>:{{ product.description }}
+</p>
+<button (click)="share()">Share</button><app-products-alerts [product]="product" (notify)="onNotify()"></app-products-alerts>
+</div>
+</div>
+</div>
+</div>
